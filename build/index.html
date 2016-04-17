@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="GitHubApp">
+  <head>
+    <meta charset="utf-8">
+    <title>GitHub API</title>
+  </head>
+  <body>
+    <main ng-init="userctrl.getUser(); userctrl.getStarred()" ng-controller="UserController as userctrl">
+      <div>
+        <img ng-src="{{userctrl.user.avatar_url}}" />
+        <p>{{userctrl.user.name}}</p>
+        <p>Followers: {{userctrl.user.followers}}</p>
+        <p>Followers: {{userctrl.user.following}}</p>
+        <p>Stars: {{userctrl.stars}}</p>
+        <p>Starred: {{userctrl.starred.length}}</p>
+      </div>
+      <div>
+        <h2 ng-init="userctrl.getRepos()">Repositories</h2>
+        <ul>
+          <li ng-repeat="repo in userctrl.repos" ><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></li>
+        </ul>
+      <script src="./bundle.js"></script>
+      </div>
+    </main>
+
+  </body>
+</html>
