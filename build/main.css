@@ -1,0 +1,19 @@
+main {
+  margin-top: 20px;
+}
+body {
+  background-color: ;
+}
+a:link {
+    text-decoration: none;
+}
+img {
+  border: 3px solid white;
+}
+
+#header {
+  background-color: black;
+  padding: 20px;
+  border-radius: 6px;
+  color: white;
+}

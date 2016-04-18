@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html data-ng-app="GitHubApp">
   <head>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css" media="screen" title="no title" charset="utf-8">
     <meta charset="utf-8">
     <title>GitHub API</title>
   </head>
   <body>
-    <main ng-init="userctrl.getUser(); userctrl.getStarred()" ng-controller="UserController as userctrl">
-      <div>
-        <img ng-src="{{userctrl.user.avatar_url}}" />
-        <p>{{userctrl.user.name}}</p>
-        <p>Followers: {{userctrl.user.followers}}</p>
-        <p>Followers: {{userctrl.user.following}}</p>
-        <p>Stars: {{userctrl.stars}}</p>
-        <p>Starred: {{userctrl.starred.length}}</p>
+    <main class="container" ng-init="userctrl.getUser(); userctrl.getStarred()" ng-controller="UserController as userctrl">
+      <div id="header" class="row">
+        <div class="col-md-3">
+          <img class="img-rounded" ng-src="{{userctrl.user.avatar_url}}" />
+        </div>
+        <div class=col-md-3>
+          <h2>{{userctrl.user.name}}</h2>
+          <p>Followers: {{userctrl.user.followers}}</p>
+          <p>Followers: {{userctrl.user.following}}</p>
+          <p>Stars: {{userctrl.stars}}</p>
+          <p>Starred: {{userctrl.starred.length}}</p>
+        </div>
       </div>
-      <div>
-        <h2 ng-init="userctrl.getRepos()">Repositories</h2>
-        <ul>
-          <li ng-repeat="repo in userctrl.repos" ><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></li>
-        </ul>
+      <div class="row">
+        <div class="col-md-12">
+          <h2 ng-init="userctrl.getRepos()">Repositories</h2>
+          <table class="table table-hover">
+            <tr>
+              <th>Name</th>
+              <th>Creation Date</th>
+              <th>Language</th>
+            </tr>
+            <tr ng-repeat="repo in userctrl.repos" >
+              <td><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></td>
+              <td>{{repo.created_at}}</td>
+              <td>{{repo.language}}</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
       <script src="./bundle.js"></script>
       </div>
     </main>
